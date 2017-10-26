@@ -1,0 +1,27 @@
+version: '3.0'
+services:
+  php:
+    container_name: php
+    image: cristianogomes/chrisbuntu:v1.0
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/var/www/html
+    restart: on-failure
+    links:
+      - db
+    command: apache2ctl -D FOREGROUND
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: NOME_BANCO_DADOS
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: SENHA_USUARIO_ROOT
+    volumes:
+      - PASTA_DADOS_MYSQL:/var/lib/mysql
+      - PASTA_MYSQL_CNF:/etc/mysql/conf.d
+      - PASTA_MIGRATIONS:/docker-entrypoint-initdb.d
