@@ -2,7 +2,7 @@ version: '3.0'
 services:
   php:
     container_name: php
-    image: cristianogomes/chrisbuntu:v1.0
+    image: cristianogomes/chrisbuntu
     ports:
       - 80:80
     volumes:
