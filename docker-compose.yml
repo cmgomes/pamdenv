@@ -6,7 +6,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./html:/var/www/html
+      - PASTA_ROOT_APLICACAO:/var/www/html
     restart: on-failure
     links:
       - db
